@@ -2,7 +2,7 @@
   import { onMount, } from "svelte";
   import ws from "./assets/ws.svg";
 
-  let host = `https://backend-rifas-tico.onrender.com/flash/ticketselected`;
+  let host = `https://backend-tico.vercel.app/api/oldusers`;
   
   let userWinner = $state({})
   
@@ -16,26 +16,31 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
   onMount( async() => {
       const response = await fetch(host)
     const data = await response.json()
-    allData = data
+    
+    console.log(data.data)
+    allData = data.data
 
-    allData.map(user => {
-        if(user.phone.startsWith(`04`)){
-          const disminuido = user.phone.slice(-10)
-          const tody2 = `58${disminuido}`
-          user.phone = tody2
-      }
+    // allData.map(user => {
+    //     if(user.phone.startsWith(`04`)){
+    //       const disminuido = user.phone.slice(-10)
+    //       const tody2 = `58${disminuido}`
+    //       user.phone = tody2
+    //   }
 
-    })
+    // })
 
   
   })
 
   const handleChange = (e) => {
     e.preventDefault()
+    // finded = allData.filter(user => 
+    //   user.tickets.some(ticket => 
+    //     ticket.value.toString().includes(inputValue)
+    //   )
+    // )
     finded = allData.filter(user => 
-      user.tickets.some(ticket => 
-        ticket.value.toString().includes(inputValue)
-      )
+      user.name.toLowerCase().includes(inputValue.toLowerCase())
     )
   }
   
@@ -58,12 +63,12 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
 
 {#each allData as item}
 <article class="card">
-<!-- <section> -->
 
   <p>{item.name.toLowerCase()}</p>
    <p class="ticket">{item.tickets.map(ticket => ticket.value).join(', ')}</p>
-  <a href={`${sendInfo}${item.phone}${secondInfo}`} target="_blank">
-    <img src={ws} alt=""></a>
+  <!-- <a href={`${sendInfo}${item.phone}${secondInfo}`} target="_blank">
+    <img src={ws} alt=""></a> -->
+    <p>{item.phone}</p>
   </article>
   <!-- </section> -->
     {/each}
@@ -76,8 +81,7 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
 
   <p>{item.name.toLowerCase()}</p>
  <p class="ticket">{item.tickets.map(ticket => ticket.value).join(', ')}</p>
-  <a href={`${sendInfo}${item.phone}${secondInfo}`} target="_blank">
-    <img src={ws} alt=""></a>
+    <p>{item.phone}</p>
   </article>
     {/each}
 
@@ -100,7 +104,6 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
   }
   .card{
     display: flex;
-    /* flex-wrap: wrap; */
     width: 95%;
     margin: 0 auto;
     padding: 6px;
