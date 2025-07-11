@@ -2,7 +2,7 @@
   import { onMount, } from "svelte";
   import ws from "./assets/ws.svg";
 
-  let host = `https://backend-tico.vercel.app/api/oldusers`;
+  let host = `https://backend-tico.onrender.com/api/oldusers`;
   
   let userWinner = $state({})
   
