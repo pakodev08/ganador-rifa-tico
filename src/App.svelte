@@ -2,7 +2,8 @@
   import { onMount, } from "svelte";
   import ws from "./assets/ws.svg";
 
-  let host = `https://backend-tico.onrender.com/guerra/users`;
+  // let host = `https://backend-tico.onrender.com/guerra/users`;
+  let host = `http://localhost:4005/guerra/users`;
   
   let userWinner = $state({})
   
@@ -17,8 +18,8 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
       const response = await fetch(host)
     const data = await response.json()
     
-    console.log(data.data)
-    allData = data.data
+    console.log(data.user)
+    allData = data.user
 
     // allData.map(user => {
     //     if(user.phone.startsWith(`04`)){
@@ -34,14 +35,14 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
 
   const handleChange = (e) => {
     e.preventDefault()
-    // finded = allData.filter(user => 
-    //   user.tickets.some(ticket => 
-    //     ticket.value.toString().includes(inputValue)
-    //   )
-    // )
     finded = allData.filter(user => 
-      user.number.toLowerCase().includes(inputValue.toLowerCase())
+      user.numbers.some(ticket => 
+        ticket.number.toString().includes(inputValue)
+      )
     )
+    // finded = allData.filter(user => 
+    //   user.name.toLowerCase().includes(inputValue.toLowerCase())
+    // )
   }
   
 </script>
@@ -65,9 +66,9 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
 <article class="card">
 
   <p>{item.name.toLowerCase()}</p>
-   <p class="ticket">{item.tickets.map(ticket => ticket.value).join(', ')}</p>
-  <!-- <a href={`${sendInfo}${item.phone}${secondInfo}`} target="_blank">
-    <img src={ws} alt=""></a> -->
+   <p class="ticket">{item.numbers.map(ticket => ticket.number).join(', ')}</p>
+  <a href={`${sendInfo}${item.phone}${secondInfo}`} target="_blank">
+    <img src={ws} alt=""></a>
     <p>{item.phone}</p>
   </article>
   <!-- </section> -->
@@ -80,7 +81,7 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
 <article class="card">
 
   <p>{item.name.toLowerCase()}</p>
- <p class="ticket">{item.tickets.map(ticket => ticket.value).join(', ')}</p>
+ <p class="ticket">{item.numbers.map(ticket => ticket.number).join(', ')}</p>
     <p>{item.phone}</p>
   </article>
     {/each}
