@@ -2,8 +2,8 @@
   import { onMount, } from "svelte";
   import ws from "./assets/ws.svg";
 
-  // let host = `https://backend-tico.onrender.com/guerra/users`;
-  let host = `http://localhost:4005/guerra/users`;
+  let host = `https://backend-tico.onrender.com/guerra/users`;
+  // let host = `http://localhost:4005/guerra/users`;
   
   let userWinner = $state({})
   
