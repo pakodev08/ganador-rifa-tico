@@ -2,7 +2,7 @@
   import { onMount, } from "svelte";
   import ws from "./assets/ws.svg";
 
-  let host = `https://backend-tico.onrender.com/api/oldusers`;
+  let host = `https://backend-tico.onrender.com/guerra/users`;
   
   let userWinner = $state({})
   
@@ -40,7 +40,7 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
     //   )
     // )
     finded = allData.filter(user => 
-      user.name.toLowerCase().includes(inputValue.toLowerCase())
+      user.number.toLowerCase().includes(inputValue.toLowerCase())
     )
   }
   
