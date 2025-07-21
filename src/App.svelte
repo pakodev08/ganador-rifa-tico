@@ -21,14 +21,14 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
     console.log(data.user)
     allData = data.user
 
-    // allData.map(user => {
-    //     if(user.phone.startsWith(`04`)){
-    //       const disminuido = user.phone.slice(-10)
-    //       const tody2 = `58${disminuido}`
-    //       user.phone = tody2
-    //   }
+    allData.map(user => {
+        if(user.phone.startsWith(`4`)){
+          const disminuido = user.phone.slice(-10)
+          const tody2 = `58${disminuido}`
+          user.phone = tody2
+      }
 
-    // })
+    })
 
   
   })
