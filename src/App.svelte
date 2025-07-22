@@ -22,6 +22,7 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
     allData = data.user
 
     allData.map(user => {
+      user.phone = user.phone.toString()
         if(user.phone.startsWith(`4`)){
           const disminuido = user.phone.slice(-10)
           const tody2 = `58${disminuido}`
