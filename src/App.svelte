@@ -83,7 +83,9 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
 
   <p>{item.name.toLowerCase()}</p>
  <p class="ticket">{item.numbers.map(ticket => ticket.number).join(', ')}</p>
-    <p>{item.phone}</p>
+ <a href={`${sendInfo}${item.phone}${secondInfo}`} target="_blank">
+   <img src={ws} alt=""></a>
+   <p>{item.phone}</p>
   </article>
     {/each}
 
