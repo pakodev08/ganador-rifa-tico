@@ -70,7 +70,7 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
    <p class="ticket">{item.numbers.map(ticket => ticket.number).join(', ')}</p>
   <a href={`${sendInfo}${item.tlf}${secondInfo}`} target="_blank">
     <img src={ws} alt=""></a>
-    <p>{item.tlf}</p>
+    <!-- <p>{item.tlf}</p> -->
   </article>
   <!-- </section> -->
     {/each}
@@ -85,7 +85,7 @@ let secondInfo = `&text=Hola.%20Ha%20ganado%20el%20premio%20de%20300$%20de%20Tic
  <p class="ticket">{item.numbers.map(ticket => ticket.number).join(', ')}</p>
  <a href={`${sendInfo}${item.tlf}${secondInfo}`} target="_blank">
    <img src={ws} alt=""></a>
-   <p>{item.tlf}</p>
+   <!-- <p>{item.tlf}</p> -->
   </article>
     {/each}
 
